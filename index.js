@@ -16,7 +16,7 @@ async function loginBots() {
   const bots = JSON.parse(process.env.BOTS_JSON);
   for (const [botId, cookie] of Object.entries(bots)) {
     try {
-      const botInstance = new noblox.Noblox();
+      const botInstance = Object.create(noblox);
       await botInstance.setCookie(cookie);
       const user = await botInstance.getCurrentUser();
       botSessions[botId] = botInstance;
