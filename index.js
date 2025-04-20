@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 const botSessions = {};
 
 async function loginBots() {
-  const bots = JSON.parse(fs.readFileSync('bots.json', 'utf-8'));
+  const bots = JSON.parse(process.env.BOTS_JSON);
   for (const [botId, cookie] of Object.entries(bots)) {
     try {
       const botInstance = new noblox.Noblox();
